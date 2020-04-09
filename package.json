@@ -1,7 +1,7 @@
 {
   "name": "fuchar",
   "displayName": "fuchar",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Fuchar Ascii Font Generator",
   "categories": [
     "Formatters"
@@ -15,6 +15,9 @@
     "Pagga"
   ],
   "homepage": "https://github.com/whardier/vscode-fuchar",
+  "repository": {
+    "url": "https://github.com/whardier/vscode-fuchar"
+  },
   "funding": "https://github.com/sponsors/whardier",
   "license": "MIT",
   "author": {
