@@ -1,0 +1,64 @@
+{
+  "name": "fuchar",
+  "displayName": "fuchar",
+  "version": "0.0.1",
+  "description": "Fuchar Ascii Font Generator",
+  "categories": [
+    "Formatters"
+  ],
+  "keywords": [
+    "Comment",
+    "Font",
+    "Toilet",
+    "Figlet",
+    "Future",
+    "Pagga"
+  ],
+  "homepage": "https://github.com/whardier/vscode-fuchar",
+  "funding": "https://github.com/sponsors/whardier",
+  "license": "MIT",
+  "author": {
+    "name": "Shane R. Spencer",
+    "url": "https://github.com/whardier"
+  },
+  "main": "./src/extension",
+  "scripts": {
+    "lint": "eslint .",
+    "pretest": "npm run lint",
+    "test": "node ./test/runTest.js"
+  },
+  "contributes": {
+    "commands": [
+      {
+        "command": "fuchar.replaceSelectionFuture",
+        "title": "Fuchar: Future"
+      },
+      {
+        "command": "fuchar.replaceSelectionPagga",
+        "title": "Fuchar: Pagga"
+      }
+    ]
+  },
+  "activationEvents": [
+    "onCommand:fuchar.replaceSelectionFuture",
+    "onCommand:fuchar.replaceSelectionPagga"
+  ],
+  "devDependencies": {
+    "@types/glob": "^7.1.1",
+    "@types/mocha": "^7.0.2",
+    "@types/node": "^13.11.0",
+    "@types/vscode": "^1.44.0",
+    "eslint": "^6.8.0",
+    "glob": "^7.1.6",
+    "mocha": "^7.1.1",
+    "typescript": "^3.8.3",
+    "vscode-test": "^1.3.0"
+  },
+  "dependencies": {
+    "detect-newline": "^3.1.0",
+    "detect-indent": "^6.0.0"
+  },
+  "engines": {
+    "vscode": "^1.44.0"
+  }
+}
