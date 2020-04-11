@@ -27,6 +27,10 @@
 // Author: Shane R. Spencer <spencersr@gmail.com>
 
 // TODO: Add Comment Block Support
+// TODO: Dynamic font height
+
+const detectNewline = require('detect-newline');
+const detectIndent = require('detect-indent');
 
 /**
  * Generates a list with the string character by character
@@ -41,33 +45,45 @@ function strToChars(str) {
  * Render string using future font
  * @todo Add Newline Handling
  * @param {string} font
- * @param {string} text
- * @param {string} [newline = "\n"]
+ * @param {string} text 
  * @returns {string}
  */
-function render_string(font, text, newline) {
+function render_string(font, text) {
+
   var buffer = "";
 
   let fontData = require(`../fonts/${font}.json`);
-
-  if (!newline) {
-    newline = "\n";
+  
+  var newline = detectNewline(text);
+  var indent = detectIndent(text).indent;
+  
+  if(newline) {
+    var lines = text.split(newline);
+  } else {
+    newline = '\n';
+    var lines = [text];
   }
 
-  var line_0 = "";
-  var line_1 = "";
-  var line_2 = "";
+  lines.forEach((line) => {
 
-  strToChars(text).forEach((c) => {
-    let char = fontData[c];
+    var line_0 = indent;
+    var line_1 = indent;
+    var line_2 = indent;
 
-    line_0 += char[0];
-    line_1 += char[1];
-    line_2 += char[2];
+    strToChars(line.trim()).forEach((c) => {
+      let char = fontData[c];
+  
+      line_0 += char[0];
+      line_1 += char[1];
+      line_2 += char[2];
+
+    });
+
+    buffer += [line_0, line_1, line_2].join(newline);
+
   });
-
-  buffer += [line_0, line_1, line_2].join(newline);
-  return buffer;
+  
+  return buffer + newline;
 }
 
 module.exports = {
